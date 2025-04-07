@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CervicalAI - Cervical Health Analysis</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="icon" href="favicon.ico" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
@@ -15,19 +14,26 @@
         Cervical AI analyzes cervical images to classify abnormalities and potential precancerous conditions, providing detailed analysis for gynecologists, hospitals, and healthcare providers.
       </p>
       <h3>Chat Controls</h3>
-      <button>➕ New Chat</button>
-      <button>☰ Clear All</button>
+      <div class="button-group">
+        <button class="new-chat">➕ New Chat</button>
+        <button class="clear-all">☰ Clear All</button>
+      </div>
     </aside>
+    
     <main class="main">
       <header class="header">
         <h1>Cervical AI</h1>
         <p>Advanced Cervical Health Analysis System</p>
       </header>
+      
       <section class="upload-box">
-        <h2>📤 Upload Cervical Image</h2>
-        <label for="cervical-upload">+ Click to Upload Cervical Image</label>
-        <input type="file" id="cervical-upload" accept="image/*" />
+        <h2>Upload Cervical Image</h2>
+        <div class="file-upload">
+          <label for="cervical-upload">+ Click to Upload Cervical Image</label>
+          <input type="file" id="cervical-upload" accept="image/*">
+        </div>
       </section>
+      
       <section class="info">
         <p>Upload a cervical image to get an AI-powered analysis of potential conditions.</p>
         <ul>
@@ -36,8 +42,9 @@
           <li><strong>Normal (LOW RISK)</strong> – <span class="green">Not Detected</span></li>
         </ul>
       </section>
+      
       <div class="chatbox">
-        <input type="text" placeholder="Ask a question about cervical health..." />
+        <input type="text" placeholder="Ask a question about cervical health...">
         <button>&#10148;</button>
       </div>
     </main>
