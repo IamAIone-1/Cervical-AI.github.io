@@ -4,7 +4,239 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CervicalAI - Cervical Health Analysis</title>
-  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Enhanced CervicalAI Styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+    }
+    
+    body {
+      background-color: #f9f2f6;
+      color: #333;
+      line-height: 1.6;
+      padding: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    /* Layout and containers */
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    
+    .sidebar {
+      flex: 1;
+      min-width: 300px;
+      background-color: #fff;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(180, 75, 119, 0.1);
+    }
+    
+    .main {
+      flex: 3;
+      min-width: 300px;
+    }
+    
+    /* Typography */
+    h1, h2, h3 {
+      color: #b44b77;
+      margin-bottom: 15px;
+    }
+    
+    h1 {
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    
+    h2 {
+      font-size: 1.6rem;
+      border-bottom: 2px solid #f8e6ee;
+      padding-bottom: 10px;
+    }
+    
+    h3 {
+      font-size: 1.3rem;
+    }
+    
+    p {
+      margin-bottom: 20px;
+      color: #444;
+    }
+    
+    /* Header section */
+    .header {
+      background: linear-gradient(135deg, #b44b77, #e889ad);
+      color: white;
+      padding: 30px;
+      border-radius: 10px;
+      margin-bottom: 25px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(180, 75, 119, 0.2);
+    }
+    
+    .header h1 {
+      color: white;
+      margin-bottom: 10px;
+      font-size: 2.8rem;
+    }
+    
+    .header p {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 1.2rem;
+      margin-bottom: 0;
+    }
+    
+    /* Button styles */
+    button, .button {
+      background-color: #b44b77;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: background-color 0.3s;
+      margin-right: 10px;
+      margin-bottom: 10px;
+      display: inline-flex;
+      align-items: center;
+    }
+    
+    button:hover, .button:hover {
+      background-color: #9c3a63;
+    }
+    
+    /* Upload section */
+    .upload-box {
+      background-color: white;
+      padding: 25px;
+      border-radius: 10px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 12px rgba(180, 75, 119, 0.1);
+    }
+    
+    .file-upload {
+      margin: 20px 0;
+    }
+    
+    .file-upload label {
+      display: inline-block;
+      background-color: #f8e6ee;
+      color: #b44b77;
+      padding: 12px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: background-color 0.3s;
+    }
+    
+    .file-upload label:hover {
+      background-color: #f2d1e1;
+    }
+    
+    .file-upload input[type="file"] {
+      display: none;
+    }
+    
+    /* Info section */
+    .info {
+      background-color: white;
+      padding: 25px;
+      border-radius: 10px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 12px rgba(180, 75, 119, 0.1);
+    }
+    
+    .info ul {
+      list-style-type: none;
+      padding-left: 10px;
+    }
+    
+    .info li {
+      margin: 12px 0;
+      padding-left: 15px;
+      position: relative;
+    }
+    
+    .info li::before {
+      content: "•";
+      color: #b44b77;
+      font-weight: bold;
+      position: absolute;
+      left: 0;
+    }
+    
+    .red {
+      color: #d32f2f;
+      font-weight: 600;
+    }
+    
+    .orange {
+      color: #f57c00;
+      font-weight: 600;
+    }
+    
+    .green {
+      color: #388e3c;
+      font-weight: 600;
+    }
+    
+    /* Chat box */
+    .chatbox {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    
+    .chatbox input {
+      flex: 1;
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+    
+    .chatbox input:focus {
+      border-color: #b44b77;
+    }
+    
+    .chatbox button {
+      padding: 0 20px;
+      font-size: 1.2rem;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+      
+      .sidebar, .main {
+        width: 100%;
+      }
+      
+      .header {
+        padding: 20px;
+      }
+      
+      .header h1 {
+        font-size: 2.2rem;
+      }
+      
+      .upload-box, .info {
+        padding: 20px;
+      }
+    }
+  </style>
 </head>
 <body>
   <div class="container">
@@ -14,10 +246,8 @@
         Cervical AI analyzes cervical images to classify abnormalities and potential precancerous conditions, providing detailed analysis for gynecologists, hospitals, and healthcare providers.
       </p>
       <h3>Chat Controls</h3>
-      <div class="button-group">
-        <button class="new-chat">➕ New Chat</button>
-        <button class="clear-all">☰ Clear All</button>
-      </div>
+      <button>➕ New Chat</button>
+      <button>☰ Clear All</button>
     </aside>
     
     <main class="main">
@@ -27,7 +257,7 @@
       </header>
       
       <section class="upload-box">
-        <h2>Upload Cervical Image</h2>
+        <h2>📤 Upload Cervical Image</h2>
         <div class="file-upload">
           <label for="cervical-upload">+ Click to Upload Cervical Image</label>
           <input type="file" id="cervical-upload" accept="image/*">
